@@ -1,0 +1,25 @@
+{
+    "eodatadown":
+    {
+        "details":
+        {
+            "name":"EODD",
+            "description":"Install of EODD"
+        },
+        "database":
+        {
+            "connection":"postgresql://postgres:postgres@db/postgres"
+        },
+        "sensors":
+        {
+            "Sentinel2GOOG":
+            {
+                "config":"/data/settings/Sentinel2Goog.json"
+            },
+            "LandsatGOOG":
+            {
+                "config":"/data/settings/LandsatGoog.json"
+            }
+        }
+    }
+}

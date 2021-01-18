@@ -1,0 +1,88 @@
+{"eodatadown":
+{
+    "sensor":
+    {
+        "name":"LandsatGOOG",
+        "paths":
+        {
+            "download":"/data/data/landsat/downloads",
+            "ardwork":"/data/data/landsat/adr_work",
+            "ardfinal":"/data/data/landsat/ard",
+            "ardtmp":"/data/data/landsat/tmp",
+            "quicklooks":"/data/data/landsat/quicklook",
+            "tilecache":"/data/data/landsat/tilecache"
+        },
+        "ardparams":
+        {
+            "dem":"/data/bounds/DTM.tif",
+            "proj":
+            {
+                "epsg":32629,
+                "projabbv":"WGS84_29N"
+            },
+            "roi":
+            {
+                {
+                    "vec_file":"/data/bounds/inner_extent.geojson",
+                    "vec_layer":"inner_extent"
+                },
+                "subset":
+                {
+                    "vec_file":"/data/bounds/outer_extent.geojson",
+                    "vec_layer":"outer_extent"
+                }
+            }
+        },
+        "download":
+        {
+            "wrs2":[{"path":205, "row":23}
+            ],
+            "cloudcover":2,
+            "spacecraft":["LANDSAT_8"],
+            "sensor":["OLI_TIRS","ETM","TM"],
+            "collection":["T1"],
+            "startdate":"2020-03-01"
+        },
+        "googleinfo":
+        {
+            "projectname":"eoddgsd",
+            "googlejsonkey":"/data/.hidden/eoddgsd-37838f27be75.json"
+        },
+        "plugins":
+        {
+            "analysis":
+            [
+                {
+                    "path":"/data/plugins/landsat",
+                    "module": "landsat_clearsky",
+                    "class": "LandsatClearSky",
+                    "params":
+                    {
+                        "tmp_path": "/data/data/tmp"
+                    }
+                },
+                {
+                    "path":"/data/plugins/landsat",
+                    "module": "waterClassification",
+                    "class": "waterClassification",
+                    "params":
+                    {
+                        "tmp_path": "/data/data/tmp"
+                    }
+                },
+                {
+                    "path":"/data/plugins/landsat",
+                    "module": "ndwi",
+                    "class": "ndwi",
+                    "params":
+                    {
+                        "tmp_path": "/data/data/tmp"
+                    }
+                }
+            ]
+        }
+
+    }
+
+}
+}

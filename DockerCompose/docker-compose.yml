@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+    eodd:
+        image: echoesproj/eoed-dev
+        restart: always
+        stdin_open: true
+        tty: true
+        entrypoint: /bin/sh
+        volumes:
+            - ../data:/data/data
+            - ../bounds:/data/bounds
+            - ./settings:/data/settings
+            - ../.hidden:/data/.hidden
+            - ./plugins:/data/plugins
+    db:
+        image: kartoza/postgis:latest
+        restart: always
+        environment: 
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - ../database_data:/var/lib/postgresql
+        ports:
+            - 65432:5432
+
+
+volumes: 
+    database_data: {}
+    data: {}

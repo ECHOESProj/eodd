@@ -1,0 +1,68 @@
+{"eodatadown":
+{
+    "sensor":
+    {
+        "name":"Sentinel2GOOG",
+        "paths":
+        {
+            "download":"/data/data/s2g/downloads",
+            "ardwork":"/data/data/s2g/adr_work",
+            "ardfinal":"/data/data/s2g/ard",
+            "ardtmp":"/data/data/s2g/tmp",
+            "quicklooks":"/data/data/s2g/quicklook",
+            "tilecache":"/data/data/s2g/tilecache"
+        },
+        "ardparams":
+        {
+            "dem":"/data/bounds/DTM.tif",
+            "proj":
+            {
+                "epsg":32629,
+                "projabbv":"WGS84_29N"
+            },
+            "roi":
+            {
+                "intersect":
+                {
+                    "vec_file":"/data/bounds/inner_extent.geojson",
+                    "vec_layer":"inner_extent"
+                },
+                "subset":
+                {
+                    "vec_file":"/data/bounds/outer_extent.geojson",
+                    "vec_layer":"outer_extent"
+                }
+            }
+        },
+        "download":
+        {
+            "granules":[
+                "30UVD"
+
+            ],
+            "cloudcover":10,
+            "startdate":"2020-09-01"
+        },
+        "googleinfo":
+        {
+            "projectname":"<project name>",
+            "googlejsonkey":"<path to json key>"
+        },
+        "plugins":
+        {
+            "analysis":
+            [
+                {
+                    "path":"/data/plugins/sentinel2/waterClassification",
+                    "module": "waterClassification",
+                    "class": "waterClassification",
+                    "params":
+                    {
+                        "tmp_path": "/data/data/tmp"
+                    }
+                }
+            ]
+        }
+    }
+}
+}
